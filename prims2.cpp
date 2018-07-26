@@ -8,6 +8,52 @@ using namespace std;
 vector<vector<pii> > g; 
 int V,E;
 
+//version 1
+int spanningTree(vector <pair<int,int> > g[], int V)
+{   V--;
+/*
+    for(int i=1;i<=V;i++){
+        cout<<"\n"<<i;
+        for(auto j:g[i])
+            cout<<"("<<j.first<<","<<j.second<<")"<<" ";
+    }*/
+    
+    pair<int,int> node;
+    priority_queue<pair<int,int>, vector<pair<int,int> > , compare> pq;
+    int u,v,w;
+    
+    vector<bool> vis(V+1,false);
+    vector<int> key(V+1,INT_MAX); //just introduce parent here if edges of MST are needed
+    
+    key[1]=0;
+    pq.push(make_pair(key[1],1));
+    
+    int ans=0;
+    while(pq.size()){
+        node = pq.top();
+        pq.pop();
+        w = node.first, u = node.second;
+        
+        vis[u]=true;
+        for(auto i: g[u]){
+            v = i.second, w = i.first;
+            
+            if(!vis[v] && key[v] > w){
+                key[v] = w;
+                pq.push(make_pair(key[v],v));
+            }
+            
+        }
+        
+    }
+    
+    for(int i=1;i<=V;i++)
+      if(key[i]!=INT_MAX)
+        ans+=key[i];
+    return ans;
+}
+
+//version 2
 void mst()
 {
  priority_queue<pii,vector<pii>,greater<pii> > q;

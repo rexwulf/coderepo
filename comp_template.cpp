@@ -6,11 +6,10 @@
 #define s second
 #define all(x) x.begin(), x.end()
 #define trace(x) cout<<" "<<#x<<"->"<<x
-#define traced(x) cout<<" "<<<#x<<"=["; for(auto i: x) cout<<" "<<i; cout<<" ]"
+#define tracea(x) n=sizeof(x)/sizeof(x[0]); cout<<" "<<#x<<"=["; for(int i=0; i<n;i++) cout<<" "<<x[i]<<"("<<i<<")"; cout<<" ]"
+#define traced(x) cout<<" "<<#x<<"=["; for(int i=0; i<x.size();i++) cout<<" "<<x[i]<<"("<<i<<")"; cout<<" ]"
 #define fill1d(x,val) memset(x,val,sizeof(x))
 #define fill2d(x,val) fill_n(*x, sizeof(x)/sizeof(**x),val);
-typedef long long ll;
-using namespace std;
 //---------------------------------------------------------------------------------------------------------------
 ll m,n,t,A[];
 
